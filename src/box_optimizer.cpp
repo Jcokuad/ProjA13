@@ -7,7 +7,7 @@ std::pair<int, int> find_item_pair_for_exact_box_fit(const std::vector<int>& ite
 
     std::unordered_map<int, int> visited;  // holds visited items
 
-    for (int i = 0; i < item_weights.size(); i++) {
+    for (int i = 0; i < static_cast<int>(item_weights.size()); i++) {
         int curr = item_weights[i];  // current item weight
         int rem = box_capacity - curr;  // remainder needed to meet box capacity
 
