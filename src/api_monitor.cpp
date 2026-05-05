@@ -40,6 +40,5 @@ std::pair<std::vector<std::string>, int>find_most_frequent_endpoints(const std::
     std::sort(endpoints.begin(), endpoints.end());
 
     return {endpoints, max};
-
 }
 
