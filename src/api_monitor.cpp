@@ -7,8 +7,7 @@
 std::pair<std::vector<std::string>, int>find_most_frequent_endpoints(const std::vector<std::string>& api_logs) {
     
     std::vector<std::string> endpoints;
-    int max = 0; // tracks highest frequency
-
+    
     // no logs edge case
     if (api_logs.empty()) {
         return {endpoints, 0};
@@ -22,10 +21,18 @@ std::pair<std::vector<std::string>, int>find_most_frequent_endpoints(const std::
         api_call_count[call]++;
     }
 
+    int max = 0; // tracks highest frequency
     // find the highest frequency
-    for (const auto& entry : api_call_count) {
-        if (entry.second == max) {
-            endpoints.push_back(entry.first);
+    for (const auto& endpoint : api_call_count) {
+        if (endpoint.second > max) {
+            max = endpoint.second;
+        }
+    }
+
+    // store all endpoints with max frequency
+    for (const auto& endpoint : api_call_count) {
+        if (endpoint.second == max) {
+            endpoints.push_back(endpoint.first);
         }
     }
 
